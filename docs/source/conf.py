@@ -2,12 +2,12 @@
 
 # -- Project information
 
-project = 'OTB 1Map UAE'
-copyright = '2025, Alex'
-author = 'Alex'
+project = 'Calphad 1DEV'
+copyright = '2025, Hamid'
+author = 'Hamid'
 
-release = '1.5'
-version = '1.5.0'
+release = '1.2'
+version = '1.2.0'
 
 # -- General configuration
 
