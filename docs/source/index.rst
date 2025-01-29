@@ -107,3 +107,9 @@ The "root directory" refers to the top-level project directory containing:
 - `pycalphad/` package directory
 
 Ensure you are in the root directory when running build commands.
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Quick Start
+
+   examples/metastability
