@@ -2,68 +2,108 @@
     :google-site-verification lang=en:
         yV82IoMAddNFvTOfoE9B9lcnmu01sA7HglIob1l1jzY
 
-Leveraging Orfeo ToolBox (OTB) for Enhanced Geospatial Analysis on 1Map
-=================================================================
+Pycalphad Installation Guide
+============================
 
-1Map, the UAE's national geospatial platform, provides a valuable resource for various sectors. 
-Integrating Orfeo ToolBox (OTB), a powerful open-source library for geospatial image processing, 
-can significantly enhance 1Map's capabilities. This document explores potential use cases 
-and benefits of incorporating OTB into 1Map's infrastructure.
+Pycalphad is a Python library for thermodynamic modeling, phase diagram calculation, and phase equilibrium investigations using the CALPHAD method. Follow the instructions below to install pycalphad based on your preferred method.
 
-2. Potential Use Cases
-----------------------
+Installation with pip (Recommended)
+------------------------------------
 
-Image Processing and Analysis
+To install pycalphad from PyPI using pip:
 
-**Pre-processing**:
+.. code-block:: bash
 
-- **Radiometric Calibration**: Correct for atmospheric effects, sensor variations, and other factors to improve image accuracy.
-- **Geometric Correction**: Correct for geometric distortions in satellite imagery, ensuring accurate geolocation.
-- **Atmospheric Correction**: Remove atmospheric effects like haze and aerosols to improve image clarity and accuracy.
+   pip install -U pip setuptools
+   pip install -U pycalphad
 
-**Change Detection**:
+**Using a Virtual Environment**
 
-- **Monitor Urban Growth**: Track changes in land cover and land use over time.
-- **Assess Environmental Impacts**: Detect changes in vegetation, water bodies, and coastal areas.
-- **Identify Areas of Change**: Detect changes in infrastructure, such as road construction or building development.
+It is recommended to install pycalphad within a virtual environment for better dependency management. To create and activate an environment called `pycalphad-env` on Linux or macOS:
 
-**Image Classification**:
+.. code-block:: bash
 
-- **Land Cover/Land Use Mapping**: Classify different land cover types (e.g., urban, vegetation, water) using supervised and unsupervised classification techniques.
-- **Object Detection**: Detect and identify objects of interest in imagery, such as buildings, vehicles, and ships.
+   python -m venv pycalphad-env
+   source pycalphad-env/bin/activate
+   pip install -U pip setuptools
+   pip install -U pycalphad
 
-**Feature Extraction**:
+.. note::
+   The virtual environment must be activated every time you use pycalphad.
 
-- **Extract Features from Imagery**: Extract features such as roads, rivers, and buildings for further analysis and mapping.
-- **Generate Digital Elevation Models (DEMs)**: Generate DEMs from stereo imagery for applications like hydrological modeling and terrain analysis.
+Installation with conda
+-----------------------
 
-Data Integration and Analysis
---------------
+`Anaconda` is a popular platform for scientific Python packages. If you don’t have Anaconda installed, you can download the Miniconda distribution.
 
-- **Integrate Various Geospatial Data Sources**: Combine satellite imagery, LiDAR data, and other geospatial datasets for comprehensive analysis.
-- **Perform Spatial Analysis**: Conduct spatial analysis tasks such as buffer analysis, overlay analysis, and proximity analysis.
-- **Develop Geospatial Applications**: Create custom geospatial applications using OTB's Python API for specific needs within 1Map.
+To install pycalphad from conda-forge using `conda`:
 
-3. Benefits of Integrating OTB
-------------------------------
+.. code-block:: bash
 
-- **Enhanced Data Analysis Capabilities**: OTB provides advanced algorithms and tools for sophisticated image processing and analysis.
-- **Improved Data Quality**: Pre-processing and correction algorithms significantly improve the quality of geospatial datasets, leading to more accurate analysis.
-- **Increased Efficiency**: OTB's efficient algorithms and parallel processing capabilities accelerate data processing tasks, improving productivity.
-- **Open-Source and Flexible**: Being open-source, OTB offers flexibility and customization options for specific applications within 1Map.
-- **Community Support**: OTB has an active community offering resources, tutorials, and support for users.
+   conda install -c conda-forge pycalphad
 
-4. Implementation Considerations
----------------------------------
+Installing the Development Version
+-----------------------------------
 
-- **Integration with 1Map Infrastructure**: Seamlessly integrate OTB into 1Map's existing infrastructure, ensuring smooth data flow and interoperability.
-- **User Interface**: Develop a user-friendly interface within 1Map to facilitate access to OTB functionalities.
-- **Data Management**: Establish robust procedures for handling and processing large volumes of geospatial data within 1Map.
-- **Training and Support**: Provide comprehensive training and ongoing support to 1Map users for effective utilization of OTB.
+The source code for the latest development version of pycalphad is available on GitHub. A working version of `git` and a C++ compiler is required to install the development version.
 
-5. Conclusion
--------------
+**Windows Requirements:**
+Install `git` and Microsoft Visual C++ Build Tools version 14.X. Tutorials are available online to guide you through the process.
 
-The integration to 1Map platform of Orfeo ToolBox could be used to significantly enhance its geospatial data analysis and visualization capabilities. Through our partnership with OTB, 1Map can enable more timely, accurate and insightful information and support decision making by various sectors in the UAE.
+**Steps to Install the Development Version:**
 
-**Note**: This document provides a high-level overview. A detailed implementation plan requires a thorough assessment of 1Map's specific needs and technical requirements.
+1. Clone the repository:
+
+   .. code-block:: bash
+
+      git clone https://github.com/pycalphad/pycalphad.git
+      cd pycalphad
+
+2. Install the dependencies and the package:
+
+   .. code-block:: bash
+
+      pip install -U pip setuptools
+      pip install -U -r requirements-dev.txt
+      pip install -U --no-build-isolation --editable .
+
+3. Run automated tests to ensure everything is installed correctly:
+
+   .. code-block:: bash
+
+      pytest pycalphad
+
+**Upgrading Development Version:**
+
+Changes to Python files (`.py`) in an editable install will take effect immediately upon saving. However, changes to Cython files (`.pyx` and `.pxd`) must be recompiled using:
+
+.. code-block:: bash
+
+   python setup.py build_ext --inplace
+
+**Updating the Development Version:**
+
+To update the code to the latest changes in the current branch:
+
+.. code-block:: bash
+
+   git pull
+
+To switch to a different branch (e.g., `master` for the latest released version or another feature branch):
+
+.. code-block:: bash
+
+   git checkout <branch>
+
+.. note::
+   Replace `<branch>` with the name of the branch you want to switch to.
+
+Root Directory Definition
+-------------------------
+
+The "root directory" refers to the top-level project directory containing:
+
+- `pyproject.toml` file
+- `pycalphad/` package directory
+
+Ensure you are in the root directory when running build commands.
